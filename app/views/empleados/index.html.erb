@@ -1,0 +1,33 @@
+<div class="col-12">
+<p style="text-aling:center" id="notice"><%= notice %></p>
+<h1 style="text-aling:center" align="center">Empleados</h1>
+<br>
+<%= link_to 'Agregar Empleado', new_empleado_path %>
+<br><br>
+<%= link_to "Generar PDF", reporte_pdf_path(:format => :pdf) %>
+<br><br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido Paterno</th>
+      <th scope="col">Apellido Materno</th>
+      <th scope="col">Fecha Nacimiento</th>
+      <th scope="col" colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @empleados.each do |empleado| %>
+      <tr>
+        <td><%= empleado.strnombre %></td>
+        <td><%= empleado.strapellidopaterno %></td>
+        <td><%= empleado.strapellidomaterno %></td>
+        <td><%= empleado.dtefechanacimiento %></td>
+        <td><%= link_to 'Visualizar', empleado %></td>
+        <td><%= link_to 'Editar', edit_empleado_path(empleado) %></td>
+        <td><%= link_to 'Eliminar', empleado, method: :delete, data: { confirm: '¿Desea eliminar el registro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

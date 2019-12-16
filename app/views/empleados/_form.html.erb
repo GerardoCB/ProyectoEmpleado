@@ -1,0 +1,33 @@
+<div class="form-group">
+<%= form_with(model: empleado, local: true) do |form| %>
+  <% if empleado.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% empleado.errors.messages.each do |message| %>
+            <li><%= message.last.last.html_safe %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :Nombre %>
+    <%= form.text_field :strnombre, class:'form-control'  %>
+  </div>
+  <div class="field">
+    <%= form.label :Apellido_Paterno %>
+    <%= form.text_field :strapellidopaterno, class:'form-control'  %>
+  </div>
+  <div class="field">
+    <%= form.label :Apellido_Materno %>
+    <%= form.text_field :strapellidomaterno, class:'form-control'  %>
+  </div>
+  <div class="field">
+    <%= form.label :Fecha_Nacimiento %><br>
+    <%= form.date_select :dtefechanacimiento, class:'form-control',start_year: Date.current.year, end_year: Date.current.year - 333 %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit:Guardar,class:'btn btn-info' %>
+  </div>
+<% end %>
+</div>
